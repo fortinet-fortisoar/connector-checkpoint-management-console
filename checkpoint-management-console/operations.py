@@ -7,7 +7,6 @@
 from requests import request, exceptions as req_exceptions
 from connectors.core.connector import get_logger, ConnectorError
 from connectors.core.utils import update_connnector_config
-from .constant import *
 from datetime import datetime, timedelta
 
 
