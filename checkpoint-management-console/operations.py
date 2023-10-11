@@ -69,7 +69,7 @@ class Checkpoint:
                 from connectors.debug_utils.curl_script import make_curl
                 make_curl(method, endpoint, headers=headers, params=params, data=data, verify_ssl=self.verify_ssl)
             except Exception as err:
-                logger.error(f"Error in curl utils: {str(err)}")
+                logger.debug(f"Error in curl utils: {str(err)}")
             response = request(method, endpoint, headers=headers, params=params, data=data, verify=self.verify_ssl)
 
             if 200 <= response.status_code < 300:
