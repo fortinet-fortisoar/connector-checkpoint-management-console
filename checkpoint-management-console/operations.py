@@ -114,6 +114,9 @@ class Checkpoint:
                 new_params[key] = value
         return new_params
 
+    def publish(self):
+        self.api_request("POST", "/publish")
+
 
 def check_health_ex(config, connector_info):
     try:
@@ -135,17 +138,23 @@ def get_host_details(config, params, connector_info):
 
 def add_host(config, params, connector_info):
     ob = Checkpoint(config, connector_info)
-    return ob.api_request("POST", "/add-host", data=params)
+    resp = ob.api_request("POST", "/add-host", data=params)
+    ob.publish()
+    return resp
 
 
 def update_host(config, params, connector_info):
     ob = Checkpoint(config, connector_info)
-    return ob.api_request("POST", "/set-host", data=params)
+    resp = ob.api_request("POST", "/set-host", data=params)
+    ob.publish()
+    return resp
 
 
 def delete_host(config, params, connector_info):
     ob = Checkpoint(config, connector_info)
-    return ob.api_request("POST", "/delete-host", data=params)
+    resp = ob.api_request("POST", "/delete-host", data=params)
+    ob.publish()
+    return resp
 
 
 operations = {
