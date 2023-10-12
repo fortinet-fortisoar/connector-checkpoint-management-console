@@ -89,7 +89,7 @@
           "name": "Add Host",
           "tag": "#CheckPoint Management Console",
           "recordTags": [
-            "Checkpoint",
+            "CheckPoint",
             "checkpoint-management-console"
           ],
           "isActive": false,
@@ -196,7 +196,7 @@
           "name": "Update Host",
           "tag": "#CheckPoint Management Console",
           "recordTags": [
-            "Checkpoint",
+            "CheckPoint",
             "checkpoint-management-console"
           ],
           "isActive": false,
@@ -272,7 +272,7 @@
           "name": "Get Hosts List",
           "tag": "#CheckPoint Management Console",
           "recordTags": [
-            "Checkpoint",
+            "CheckPoint",
             "checkpoint-management-console"
           ],
           "isActive": false,
@@ -342,7 +342,7 @@
           "name": "Get Host Details",
           "tag": "#CheckPoint Management Console",
           "recordTags": [
-            "Checkpoint",
+            "CheckPoint",
             "checkpoint-management-console"
           ],
           "isActive": false,
@@ -412,7 +412,7 @@
           "name": "Delete Host",
           "tag": "#CheckPoint Management Console",
           "recordTags": [
-            "Checkpoint",
+            "CheckPoint",
             "checkpoint-management-console"
           ],
           "isActive": false,
@@ -438,7 +438,7 @@
       "description": "CheckPoint Management Console helps you to configure and view the security policy and objects in a Security Management Server or Multi Domain Server using CLI tools and web-services.",
       "visible": true,
       "recordTags": [
-        "Checkpoint",
+        "CheckPoint",
         "checkpoint-management-console"
       ]
     }

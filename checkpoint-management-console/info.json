@@ -308,7 +308,7 @@
       "enabled": true,
       "parameters": [
         {
-          "title": "UID or Name",
+          "title": "Based On",
           "required": true,
           "editable": true,
           "visible": true,
@@ -619,22 +619,43 @@
           "name": "details-level",
           "tooltip": "Specify the details level. The level of detail for some of the fields in the response can vary from showing only the UID value of the object to a fully detailed representation of the object.",
           "description": "Specify the details level. The level of detail for some of the fields in the response can vary from showing only the UID value of the object to a fully detailed representation of the object.",
-          "value": "Standard"
-        },
-        {
-          "title": "Domains To Process",
-          "required": false,
-          "visible": true,
-          "editable": true,
-          "type": "select",
-          "options": [
-            "Current Domain",
-            "All Domains on the Server"
-          ],
-          "name": "domains-to-process",
-          "tooltip": "Indicates which domains to process the commands on. It cannot be used with the details-level full, must be run from the System Domain only and with ignore-warnings true.",
-          "description": "Indicates which domains to process the commands on. It cannot be used with the details-level full, must be run from the System Domain only and with ignore-warnings true.",
-          "value": "Current Domain"
+          "value": "Standard",
+          "onchange": {
+            "UID": [
+              {
+                "title": "Domains To Process",
+                "required": false,
+                "visible": true,
+                "editable": true,
+                "type": "select",
+                "options": [
+                  "Current Domain",
+                  "All Domains on the Server"
+                ],
+                "name": "domains-to-process",
+                "tooltip": "Indicates which domains to process the commands on. It cannot be used with the details-level full, must be run from the System Domain only and with ignore-warnings true.",
+                "description": "Indicates which domains to process the commands on. It cannot be used with the details-level full, must be run from the System Domain only and with ignore-warnings true.",
+                "value": "Current Domain"
+              }
+            ],
+            "Standard": [
+              {
+                "title": "Domains To Process",
+                "required": false,
+                "visible": true,
+                "editable": true,
+                "type": "select",
+                "options": [
+                  "Current Domain",
+                  "All Domains on the Server"
+                ],
+                "name": "domains-to-process",
+                "tooltip": "Indicates which domains to process the commands on. It cannot be used with the details-level full, must be run from the System Domain only and with ignore-warnings true.",
+                "description": "Indicates which domains to process the commands on. It cannot be used with the details-level full, must be run from the System Domain only and with ignore-warnings true.",
+                "value": "Current Domain"
+              }
+            ]
+          }
         }
       ],
       "output_schema": {
@@ -668,7 +689,7 @@
       "enabled": true,
       "parameters": [
         {
-          "title": "UID or Name",
+          "title": "Based On",
           "required": true,
           "editable": true,
           "visible": true,
@@ -739,7 +760,7 @@
       "enabled": true,
       "parameters": [
         {
-          "title": "UID or Name",
+          "title": "Based On",
           "required": true,
           "editable": true,
           "visible": true,
