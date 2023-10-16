@@ -1,0 +1,446 @@
+{
+  "type": "workflow_collections",
+  "data": [
+    {
+      "uuid": "d9fe8fc8-f094-4052-af31-ccc41f968657",
+      "@type": "WorkflowCollection",
+      "workflows": [
+        {
+          "@type": "Workflow",
+          "uuid": "b6902496-0b8b-4ff0-bd53-fa266825da16",
+          "collection": "/api/3/workflow_collections/d9fe8fc8-f094-4052-af31-ccc41f968657",
+          "steps": [
+            {
+              "uuid": "48be31b6-1234-4377-bc9e-82bb4a4d8891",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "5071454d-2f84-4457-bbdb-4a406e014099",
+              "@type": "WorkflowStep",
+              "name": "Add Host",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "CheckPoint Management Console",
+                "config": "''",
+                "params": {
+                  "name": "",
+                  "ip-address": "",
+                  "ipv4-address": "",
+                  "ipv6-address": "",
+                  "interfaces": {
+                    "name": "Interface1",
+                    "subnet": "198.168.123.1",
+                    "mask-length": 24,
+                    "subnet-mask": "255.255.255.0",
+                    "color": "blue",
+                    "comments": "any comment",
+                    "details-level": "standard",
+                    "ignore-warnings": true,
+                    "ignore-errors": false
+                  },
+                  "nat-settings": {
+                    "auto-rule": false,
+                    "ip-address": "198.168.123.1",
+                    "hide-behind": "gateway",
+                    "install-on": "",
+                    "method": "static"
+                  },
+                  "tags": "",
+                  "host-servers": {
+                    "dns-server": true,
+                    "mail-server": true,
+                    "web-server": true,
+                    "web-server-config": {}
+                  },
+                  "set-if-exists": "",
+                  "color": "",
+                  "comments": "",
+                  "details-level": "Standard",
+                  "groups": "",
+                  "ignore-warnings": "",
+                  "ignore-errors": ""
+                },
+                "version": "1.0.0",
+                "connector": "checkpoint-management-console",
+                "operation": "add_host",
+                "operationTitle": "Add Host"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Add host based on the parameters that you have specified.",
+          "name": "Add Host",
+          "tag": "#CheckPoint Management Console",
+          "recordTags": [
+            "CheckPoint",
+            "checkpoint-management-console"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/48be31b6-1234-4377-bc9e-82bb4a4d8891",
+          "routes": [
+            {
+              "uuid": "7e91279a-50a3-40bc-9bd3-06a4df72af17",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Add Host",
+              "sourceStep": "/api/3/workflow_steps/48be31b6-1234-4377-bc9e-82bb4a4d8891",
+              "targetStep": "/api/3/workflow_steps/5071454d-2f84-4457-bbdb-4a406e014099"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "40738adc-02b4-4334-9f55-1693b8bc33d8",
+          "collection": "/api/3/workflow_collections/d9fe8fc8-f094-4052-af31-ccc41f968657",
+          "steps": [
+            {
+              "uuid": "9084f153-db52-4bd6-980a-265edd9f657c",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "1f0ac430-c191-47d4-a984-517591ea2445",
+              "@type": "WorkflowStep",
+              "name": "Update Host",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "CheckPoint Management Console",
+                "config": "''",
+                "params": {
+                  "params_type": "UID",
+                  "interfaces": {
+                    "add": {
+                      "name": "Interface1",
+                      "subnet": "198.168.123.1",
+                      "mask-length": 24,
+                      "subnet-mask": "255.255.255.0",
+                      "color": "blue",
+                      "comments": "any comment",
+                      "details-level": "standard",
+                      "ignore-warnings": false,
+                      "ignore-errors": false
+                    }
+                  },
+                  "ip-address": "",
+                  "ipv4-address": "",
+                  "ipv6-address": "",
+                  "nat-settings": {
+                    "auto-rule": false,
+                    "ip-address": "198.168.123.1",
+                    "hide-behind": "gateway",
+                    "install-on": "",
+                    "method": "static"
+                  },
+                  "new-name": "",
+                  "tags": "",
+                  "host-servers": {
+                    "dns-server": true,
+                    "mail-server": true,
+                    "web-server": true,
+                    "web-server-config": {}
+                  },
+                  "color": "",
+                  "comments": "",
+                  "details-level": "Standard",
+                  "groups": "",
+                  "ignore-warnings": "",
+                  "ignore-errors": ""
+                },
+                "version": "1.0.0",
+                "connector": "checkpoint-management-console",
+                "operation": "update_host",
+                "operationTitle": "Update Host"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Update host based on the parameters that you have specified.",
+          "name": "Update Host",
+          "tag": "#CheckPoint Management Console",
+          "recordTags": [
+            "CheckPoint",
+            "checkpoint-management-console"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/9084f153-db52-4bd6-980a-265edd9f657c",
+          "routes": [
+            {
+              "uuid": "2e0e9b32-c88c-474b-8752-984422789a47",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Update Host",
+              "sourceStep": "/api/3/workflow_steps/9084f153-db52-4bd6-980a-265edd9f657c",
+              "targetStep": "/api/3/workflow_steps/1f0ac430-c191-47d4-a984-517591ea2445"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "c3abe40e-9104-4bf8-9dd1-b609c5227a3a",
+          "collection": "/api/3/workflow_collections/d9fe8fc8-f094-4052-af31-ccc41f968657",
+          "steps": [
+            {
+              "uuid": "7147c7d6-6917-4bdf-b6b5-2f79c3dc7297",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "44ddfb43-e4b2-4e7a-b3f6-445d5d112b6f",
+              "@type": "WorkflowStep",
+              "name": "Get Hosts List",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "CheckPoint Management Console",
+                "config": "''",
+                "params": {
+                  "filter": "",
+                  "limit": "",
+                  "offset": "",
+                  "order": "",
+                  "show-membership": "",
+                  "details-level": "Standard",
+                  "domains-to-process": "Current Domain"
+                },
+                "version": "1.0.0",
+                "connector": "checkpoint-management-console",
+                "operation": "get_hosts_list",
+                "operationTitle": "Get Hosts List"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Retrieves a detailed list of hosts based on the parameters that you have specified.",
+          "name": "Get Hosts List",
+          "tag": "#CheckPoint Management Console",
+          "recordTags": [
+            "CheckPoint",
+            "checkpoint-management-console"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/7147c7d6-6917-4bdf-b6b5-2f79c3dc7297",
+          "routes": [
+            {
+              "uuid": "f565538c-73f3-4d45-8db6-ce0e278612a3",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Hosts List",
+              "sourceStep": "/api/3/workflow_steps/7147c7d6-6917-4bdf-b6b5-2f79c3dc7297",
+              "targetStep": "/api/3/workflow_steps/44ddfb43-e4b2-4e7a-b3f6-445d5d112b6f"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "215620ba-388c-48e7-9db9-8f3a11bd09a7",
+          "collection": "/api/3/workflow_collections/d9fe8fc8-f094-4052-af31-ccc41f968657",
+          "steps": [
+            {
+              "uuid": "ed737e51-6cdb-4f14-954d-b9a58b160818",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "e3b253f2-5edd-4119-a2e8-53d2dee16890",
+              "@type": "WorkflowStep",
+              "name": "Get Host Details",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "CheckPoint Management Console",
+                "config": "''",
+                "params": {
+                  "params_type": "UID"
+                },
+                "version": "1.0.0",
+                "connector": "checkpoint-management-console",
+                "operation": "get_host_details",
+                "operationTitle": "Get Host Details"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Retrieve host details based on the uid or name that you have specified.",
+          "name": "Get Host Details",
+          "tag": "#CheckPoint Management Console",
+          "recordTags": [
+            "CheckPoint",
+            "checkpoint-management-console"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/ed737e51-6cdb-4f14-954d-b9a58b160818",
+          "routes": [
+            {
+              "uuid": "d935d451-f8f0-4dec-a17a-e34a7587a1f4",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Host Details",
+              "sourceStep": "/api/3/workflow_steps/ed737e51-6cdb-4f14-954d-b9a58b160818",
+              "targetStep": "/api/3/workflow_steps/e3b253f2-5edd-4119-a2e8-53d2dee16890"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "fbaf45b7-69e0-44c1-a873-e5c71248e4d4",
+          "collection": "/api/3/workflow_collections/d9fe8fc8-f094-4052-af31-ccc41f968657",
+          "steps": [
+            {
+              "uuid": "45881c39-201e-4e27-86ad-1c5934e2ae6b",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "b62309bb-eaac-48b0-9f3b-02748a87ec68",
+              "@type": "WorkflowStep",
+              "name": "Delete Host",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "CheckPoint Management Console",
+                "config": "''",
+                "params": {
+                  "params_type": "UID"
+                },
+                "version": "1.0.0",
+                "connector": "checkpoint-management-console",
+                "operation": "delete_host",
+                "operationTitle": "Delete Host"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Delete existing object using object name or uid.",
+          "name": "Delete Host",
+          "tag": "#CheckPoint Management Console",
+          "recordTags": [
+            "CheckPoint",
+            "checkpoint-management-console"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/45881c39-201e-4e27-86ad-1c5934e2ae6b",
+          "routes": [
+            {
+              "uuid": "3fd4dff2-58fc-4157-a083-d61880b6328e",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Delete Host",
+              "sourceStep": "/api/3/workflow_steps/45881c39-201e-4e27-86ad-1c5934e2ae6b",
+              "targetStep": "/api/3/workflow_steps/b62309bb-eaac-48b0-9f3b-02748a87ec68"
+            }
+          ]
+        }
+      ],
+      "name": "Sample - CheckPoint Management Console - 1.0.0",
+      "description": "CheckPoint Management Console helps you to configure and view the security policy and objects in a Security Management Server or Multi Domain Server using CLI tools and web-services.",
+      "visible": true,
+      "recordTags": [
+        "CheckPoint",
+        "checkpoint-management-console"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,810 @@
+{
+  "name": "checkpoint-management-console",
+  "version": "1.0.0",
+  "label": "CheckPoint Management Console",
+  "category": "Firewall and Network Protection",
+  "description": "CheckPoint Management Console helps you to configure and view the security policy and objects in a Security Management Server or Multi Domain Server using CLI tools and web-services.",
+  "publisher": "Fortinet",
+  "cs_approved": false,
+  "cs_compatible": true,
+  "help_online": "",
+  "icon_small_name": "small.png",
+  "icon_large_name": "large.png",
+  "configuration": {
+    "fields": [
+      {
+        "title": "Server URL",
+        "name": "server_url",
+        "description": "Specify the server URL of the CheckPoint Management Console server to connect and perform the automated operations.",
+        "type": "text",
+        "visible": true,
+        "editable": true,
+        "required": true
+      },
+      {
+        "title": "Credentials",
+        "required": true,
+        "editable": true,
+        "visible": true,
+        "type": "select",
+        "options": [
+          "Username and Password",
+          "API Key"
+        ],
+        "name": "auth_type",
+        "value": "Username and Password",
+        "description": "Select the type of credentials that you want to provide.",
+        "onchange": {
+          "Username and Password": [
+            {
+              "title": "Username",
+              "name": "username",
+              "description": "Specify the Username to access the CheckPoint Management Console server to connect and perform the automated operations.",
+              "type": "text",
+              "visible": true,
+              "editable": true,
+              "required": true
+            },
+            {
+              "title": "Password",
+              "name": "password",
+              "description": "Specify the Password to access the CheckPoint Management Console server to connect and perform the automated operations.",
+              "type": "password",
+              "visible": true,
+              "editable": true,
+              "required": true
+            }
+          ],
+          "API Key": [
+            {
+              "title": "API Key",
+              "name": "api_key",
+              "description": "Specify the API Key to access the CheckPoint Management Console server to connect and perform the automated operations.",
+              "type": "text",
+              "visible": true,
+              "editable": true,
+              "required": true
+            }
+          ]
+        }
+      },
+      {
+        "title": "Verify SSL",
+        "name": "verify_ssl",
+        "description": "Specifies whether the SSL certificate for the server is to be verified or not. By default, this option is set as True.",
+        "type": "checkbox",
+        "required": false,
+        "editable": true,
+        "visible": true,
+        "value": true
+      }
+    ]
+  },
+  "operations": [
+    {
+      "operation": "add_host",
+      "description": "Add host based on the parameters that you have specified.",
+      "category": "investigation",
+      "annotation": "add_host",
+      "title": "Add Host",
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Name",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "type": "text",
+          "name": "name",
+          "tooltip": "Specify the host name. Must be unique in the domain.",
+          "description": "Specify the host name. Must be unique in the domain."
+        },
+        {
+          "title": "IP Address",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "text",
+          "name": "ip-address",
+          "tooltip": "Specify the IPv4 or IPv6 address. If both addresses are required use ipv4-address and ipv6-address fields explicitly.",
+          "description": "Specify the IPv4 or IPv6 address. If both addresses are required use ipv4-address and ipv6-address fields explicitly."
+        },
+        {
+          "title": "IPv4 Address",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "text",
+          "name": "ipv4-address",
+          "tooltip": "Specify the IPv4 address.",
+          "description": "Specify the IPv4 address."
+        },
+        {
+          "title": "IPv6 Address",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "text",
+          "name": "ipv6-address",
+          "tooltip": "Specify the IPv6 address.",
+          "description": "Specify the IPv6 address."
+        },
+        {
+          "title": "Interfaces",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "json",
+          "name": "interfaces",
+          "tooltip": "Specify the host interfaces.",
+          "description": "Specify the host interfaces.",
+          "value": {
+            "name": "Interface1",
+            "subnet": "198.168.123.1",
+            "mask-length": 24,
+            "subnet-mask": "255.255.255.0",
+            "color": "blue",
+            "comments": "any comment",
+            "details-level": "standard",
+            "ignore-warnings": true,
+            "ignore-errors": false
+          }
+        },
+        {
+          "title": "NAT Settings",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "json",
+          "name": "nat-settings",
+          "tooltip": "Specify the NAT settings.",
+          "description": "Specify the NAT settings.",
+          "value": {
+            "auto-rule": false,
+            "ip-address": "198.168.123.1",
+            "hide-behind": "gateway",
+            "install-on": "",
+            "method": "static"
+          }
+        },
+        {
+          "title": "Tags",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "text",
+          "name": "tags",
+          "tooltip": "Specify comma separated tags.",
+          "description": "Specify comma separated tags.",
+          "placeholder": "tag1,tag2"
+        },
+        {
+          "title": "Host Servers",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "json",
+          "name": "host-servers",
+          "tooltip": "Specify the host servers configuration.",
+          "description": "Specify the host servers configuration.",
+          "value": {
+            "dns-server": true,
+            "mail-server": true,
+            "web-server": true,
+            "web-server-config": {}
+          }
+        },
+        {
+          "title": "Set If Exists",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "checkbox",
+          "name": "set-if-exists",
+          "tooltip": "If another object with the same identifier already exists, it will be updated. The command behaviour will be the same as if originally a set command was called. Pay attention that original object's fields will be overwritten by the fields provided in the request payload.",
+          "description": "If another object with the same identifier already exists, it will be updated. The command behaviour will be the same as if originally a set command was called. Pay attention that original object's fields will be overwritten by the fields provided in the request payload.",
+          "value": false
+        },
+        {
+          "title": "Color",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "text",
+          "name": "color",
+          "tooltip": "Specify the color for the host object.",
+          "description": "Specify the color for the host object.",
+          "placeholder": "eg: blue"
+        },
+        {
+          "title": "Comments",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "text",
+          "name": "comments",
+          "tooltip": "Specify the comments for the host object.",
+          "description": "Specify the comments for the host object."
+        },
+        {
+          "title": "Details Level",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "select",
+          "options": [
+            "UID",
+            "Standard",
+            "Full"
+          ],
+          "name": "details-level",
+          "tooltip": "Specify the details level. The level of detail for some of the fields in the response can vary from showing only the UID value of the object to a fully detailed representation of the object.",
+          "description": "Specify the details level. The level of detail for some of the fields in the response can vary from showing only the UID value of the object to a fully detailed representation of the object.",
+          "value": "Standard"
+        },
+        {
+          "title": "Groups",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "text",
+          "name": "groups",
+          "tooltip": "Specify the collection of group identifiers.",
+          "description": "Specify the collection of group identifiers."
+        },
+        {
+          "title": "Ignore Warnings",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "checkbox",
+          "name": "ignore-warnings",
+          "tooltip": "Specify whether to apply changes ignoring warnings.",
+          "description": "Specify whether to apply changes ignoring warnings.",
+          "value": false
+        },
+        {
+          "title": "Ignore Errors",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "checkbox",
+          "name": "ignore-errors",
+          "tooltip": "Specify whether to apply changes ignoring errors. You won't be able to publish such a changes. If ignore-warnings flag was omitted - warnings will also be ignored.",
+          "description": "Specify whether to apply changes ignoring errors. You won't be able to publish such a changes. If ignore-warnings flag was omitted - warnings will also be ignored.",
+          "value": false
+        }
+      ],
+      "output_schema": {
+        "uid": "",
+        "name": "",
+        "type": "",
+        "groups": [],
+        "interfaces": [],
+        "ipv4-address": "",
+        "ipv6-address": "",
+        "nat-settings": "",
+        "tags": [],
+        "host-servers": "",
+        "color": "",
+        "comments": "",
+        "domain": {
+          "uid": "",
+          "name": "",
+          "domain-type": ""
+        },
+        "icon": "",
+        "meta-info": "",
+        "read-only": "",
+        "available-actions": ""
+      }
+    },
+    {
+      "operation": "update_host",
+      "description": "Update host based on the parameters that you have specified.",
+      "category": "investigation",
+      "annotation": "update_host",
+      "title": "Update Host",
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Based On",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "select",
+          "options": [
+            "UID",
+            "Name"
+          ],
+          "name": "params_type",
+          "value": "UID",
+          "description": "Select the type of parameter that you want to provide.",
+          "onchange": {
+            "UID": [
+              {
+                "title": "UID",
+                "name": "uid",
+                "description": "Specify the UID of the host.",
+                "type": "text",
+                "visible": true,
+                "editable": true,
+                "required": true
+              }
+            ],
+            "Name": [
+              {
+                "title": "Name",
+                "name": "name",
+                "description": "Specify the name of the host.",
+                "type": "text",
+                "visible": true,
+                "editable": true,
+                "required": true
+              }
+            ]
+          }
+        },
+        {
+          "title": "Interfaces",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "json",
+          "name": "interfaces",
+          "tooltip": "Specify the host interfaces.",
+          "description": "Specify the host interfaces.",
+          "value": {
+            "add": {
+              "name": "Interface1",
+              "subnet": "198.168.123.1",
+              "mask-length": 24,
+              "subnet-mask": "255.255.255.0",
+              "color": "blue",
+              "comments": "any comment",
+              "details-level": "standard",
+              "ignore-warnings": false,
+              "ignore-errors": false
+            }
+          }
+        },
+        {
+          "title": "IP Address",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "text",
+          "name": "ip-address",
+          "tooltip": "Specify the IPv4 or IPv6 address. If both addresses are required use ipv4-address and ipv6-address fields explicitly.",
+          "description": "Specify the IPv4 or IPv6 address. If both addresses are required use ipv4-address and ipv6-address fields explicitly."
+        },
+        {
+          "title": "IPv4 Address",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "text",
+          "name": "ipv4-address",
+          "tooltip": "Specify the IPv4 address.",
+          "description": "Specify the IPv4 address."
+        },
+        {
+          "title": "IPv6 Address",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "text",
+          "name": "ipv6-address",
+          "tooltip": "Specify the IPv6 address.",
+          "description": "Specify the IPv6 address."
+        },
+        {
+          "title": "NAT Settings",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "json",
+          "name": "nat-settings",
+          "tooltip": "Specify the NAT settings.",
+          "description": "Specify the NAT settings.",
+          "value": {
+            "auto-rule": false,
+            "ip-address": "198.168.123.1",
+            "hide-behind": "gateway",
+            "install-on": "",
+            "method": "static"
+          }
+        },
+        {
+          "title": "New Name",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "text",
+          "name": "new-name",
+          "tooltip": "Specify the new name for the host object.",
+          "description": "Specify the new name for the host object."
+        },
+        {
+          "title": "Tags",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "text",
+          "name": "tags",
+          "tooltip": "Specify comma separated tags.",
+          "description": "Specify comma separated tags.",
+          "placeholder": "tag1,tag2"
+        },
+        {
+          "title": "Host Servers",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "json",
+          "name": "host-servers",
+          "tooltip": "Specify the host servers configuration.",
+          "description": "Specify the host servers configuration.",
+          "value": {
+            "dns-server": true,
+            "mail-server": true,
+            "web-server": true,
+            "web-server-config": {}
+          }
+        },
+        {
+          "title": "Color",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "text",
+          "name": "color",
+          "tooltip": "Specify the color for the host object.",
+          "description": "Specify the color for the host object.",
+          "placeholder": "eg: blue"
+        },
+        {
+          "title": "Comments",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "text",
+          "name": "comments",
+          "tooltip": "Specify the comments for the host object.",
+          "description": "Specify the comments for the host object."
+        },
+        {
+          "title": "Details Level",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "select",
+          "options": [
+            "UID",
+            "Standard",
+            "Full"
+          ],
+          "name": "details-level",
+          "tooltip": "Specify the details level. The level of detail for some of the fields in the response can vary from showing only the UID value of the object to a fully detailed representation of the object.",
+          "description": "Specify the details level. The level of detail for some of the fields in the response can vary from showing only the UID value of the object to a fully detailed representation of the object.",
+          "value": "Standard"
+        },
+        {
+          "title": "Groups",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "text",
+          "name": "groups",
+          "tooltip": "Specify the collection of group identifiers.",
+          "description": "Specify the collection of group identifiers."
+        },
+        {
+          "title": "Ignore Warnings",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "boolean",
+          "name": "ignore-warnings",
+          "tooltip": "Specify whether to apply changes ignoring warnings.",
+          "description": "Specify whether to apply changes ignoring warnings.",
+          "value": false
+        },
+        {
+          "title": "Ignore Errors",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "boolean",
+          "name": "ignore-errors",
+          "tooltip": "Specify whether to apply changes ignoring errors. You won't be able to publish such a changes. If ignore-warnings flag was omitted - warnings will also be ignored.",
+          "description": "Specify whether to apply changes ignoring errors. You won't be able to publish such a changes. If ignore-warnings flag was omitted - warnings will also be ignored.",
+          "value": false
+        }
+      ],
+      "output_schema": {
+        "uid": "",
+        "name": "",
+        "type": "",
+        "groups": [],
+        "interfaces": [],
+        "ipv4-address": "",
+        "ipv6-address": "",
+        "nat-settings": "",
+        "tags": [],
+        "host-servers": "",
+        "color": "",
+        "comments": "",
+        "domain": {
+          "uid": "",
+          "name": "",
+          "domain-type": ""
+        },
+        "icon": "",
+        "meta-info": "",
+        "read-only": "",
+        "available-actions": ""
+      }
+    },
+    {
+      "operation": "get_hosts_list",
+      "description": "Retrieves a detailed list of hosts based on the parameters that you have specified.",
+      "category": "investigation",
+      "annotation": "get_hosts_list",
+      "title": "Get Hosts List",
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Filter",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "text",
+          "name": "filter",
+          "tooltip": "Specify the search expression to filter objects. The provided text should be exactly the same as it would be given in SmartConsole Object Explorer. The logical operators in the expression ('AND', 'OR') should be provided in capital letters. The search involves both a IP search and a textual search in name, comment, tags etc.",
+          "description": "Specify the search expression to filter objects. The provided text should be exactly the same as it would be given in SmartConsole Object Explorer. The logical operators in the expression ('AND', 'OR') should be provided in capital letters. The search involves both a IP search and a textual search in name, comment, tags etc."
+        },
+        {
+          "title": "Limit",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "integer",
+          "name": "limit",
+          "tooltip": "Specify the maximum number of objects that should be returned. The value should be between 1 to 500. Default value is 50.",
+          "description": "Specify the maximum number of objects that should be returned. The value should be between 1 to 500. Default value is 50."
+        },
+        {
+          "title": "Offset",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "integer",
+          "name": "offset",
+          "tooltip": "Specify the offset, i.e. the number of results to skip initially. Default value is 0.",
+          "description": "Specify the offset, i.e. the number of results to skip initially. Default value is 0."
+        },
+        {
+          "title": "Order",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "text",
+          "name": "order",
+          "tooltip": "Specify the order, it sorts the results by search criteria. Automatically sorts the results by Name, in the ascending order.",
+          "description": "Specify the order, it sorts the results by search criteria. Automatically sorts the results by Name, in the ascending order."
+        },
+        {
+          "title": "Show Membership",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "checkbox",
+          "name": "show-membership",
+          "tooltip": "Indicates whether to calculate and show 'groups' field for every object in reply.",
+          "description": "Indicates whether to calculate and show 'groups' field for every object in reply.",
+          "value": false
+        },
+        {
+          "title": "Details Level",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "select",
+          "options": [
+            "UID",
+            "Standard",
+            "Full"
+          ],
+          "name": "details-level",
+          "tooltip": "Specify the details level. The level of detail for some of the fields in the response can vary from showing only the UID value of the object to a fully detailed representation of the object.",
+          "description": "Specify the details level. The level of detail for some of the fields in the response can vary from showing only the UID value of the object to a fully detailed representation of the object.",
+          "value": "Standard",
+          "onchange": {
+            "UID": [
+              {
+                "title": "Domains To Process",
+                "required": false,
+                "visible": true,
+                "editable": true,
+                "type": "select",
+                "options": [
+                  "Current Domain",
+                  "All Domains on the Server"
+                ],
+                "name": "domains-to-process",
+                "tooltip": "Indicates which domains to process the commands on. It cannot be used with the details-level full, must be run from the System Domain only and with ignore-warnings true.",
+                "description": "Indicates which domains to process the commands on. It cannot be used with the details-level full, must be run from the System Domain only and with ignore-warnings true.",
+                "value": "Current Domain"
+              }
+            ],
+            "Standard": [
+              {
+                "title": "Domains To Process",
+                "required": false,
+                "visible": true,
+                "editable": true,
+                "type": "select",
+                "options": [
+                  "Current Domain",
+                  "All Domains on the Server"
+                ],
+                "name": "domains-to-process",
+                "tooltip": "Indicates which domains to process the commands on. It cannot be used with the details-level full, must be run from the System Domain only and with ignore-warnings true.",
+                "description": "Indicates which domains to process the commands on. It cannot be used with the details-level full, must be run from the System Domain only and with ignore-warnings true.",
+                "value": "Current Domain"
+              }
+            ]
+          }
+        }
+      ],
+      "output_schema": {
+        "from": "",
+        "to": "",
+        "total": "",
+        "objects": [
+          {
+            "uid": "",
+            "name": "",
+            "type": "",
+            "domain": {
+              "uid": "",
+              "name": "",
+              "domain-type": ""
+            },
+            "icon": "",
+            "color": "",
+            "ipv4-address": "",
+            "ipv6-address": ""
+          }
+        ]
+      }
+    },
+    {
+      "operation": "get_host_details",
+      "description": "Retrieve host details based on the uid or name that you have specified.",
+      "category": "investigation",
+      "annotation": "get_host_details",
+      "title": "Get Host Details",
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Based On",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "select",
+          "options": [
+            "UID",
+            "Name"
+          ],
+          "name": "params_type",
+          "value": "UID",
+          "description": "Select the type of parameter that you want to provide.",
+          "onchange": {
+            "UID": [
+              {
+                "title": "UID",
+                "name": "uid",
+                "description": "Specify the UID of the host.",
+                "type": "text",
+                "visible": true,
+                "editable": true,
+                "required": true
+              }
+            ],
+            "Name": [
+              {
+                "title": "Name",
+                "name": "name",
+                "description": "Specify the name of the host.",
+                "type": "text",
+                "visible": true,
+                "editable": true,
+                "required": true
+              }
+            ]
+          }
+        }
+      ],
+      "output_schema": {
+        "uid": "",
+        "name": "",
+        "type": "",
+        "groups": [],
+        "interfaces": [],
+        "ipv4-address": "",
+        "ipv6-address": "",
+        "nat-settings": "",
+        "tags": [],
+        "host-servers": "",
+        "color": "",
+        "comments": "",
+        "domain": {
+          "uid": "",
+          "name": "",
+          "domain-type": ""
+        },
+        "icon": "",
+        "meta-info": "",
+        "read-only": "",
+        "available-actions": ""
+      }
+    },
+    {
+      "operation": "delete_host",
+      "description": "Delete existing object using object name or uid.",
+      "category": "investigation",
+      "annotation": "delete_host",
+      "title": "Delete Host",
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Based On",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "select",
+          "options": [
+            "UID",
+            "Name"
+          ],
+          "name": "params_type",
+          "value": "UID",
+          "description": "Select the type of parameter that you want to provide.",
+          "onchange": {
+            "UID": [
+              {
+                "title": "UID",
+                "name": "uid",
+                "description": "Specify the UID of the host.",
+                "type": "text",
+                "visible": true,
+                "editable": true,
+                "required": true
+              }
+            ],
+            "Name": [
+              {
+                "title": "Name",
+                "name": "name",
+                "description": "Specify the name of the host.",
+                "type": "text",
+                "visible": true,
+                "editable": true,
+                "required": true
+              }
+            ]
+          }
+        }
+      ],
+      "output_schema": {
+        "message": "",
+        "warnings": [],
+        "errors": [],
+        "blocking-errors": [],
+        "code": ""
+      }
+    }
+  ]
+}
