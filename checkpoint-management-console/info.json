@@ -7,7 +7,7 @@
   "publisher": "Fortinet",
   "cs_approved": false,
   "cs_compatible": true,
-  "help_online": "",
+  "help_online": "https://github.com/fortinet-fortisoar/connector-checkpoint-management-console/blob/release/1.0.0/docs/CheckpointManagementConsoleConnectorDoc.md",
   "icon_small_name": "small.png",
   "icon_large_name": "large.png",
   "configuration": {
@@ -83,10 +83,10 @@
   "operations": [
     {
       "operation": "add_host",
-      "description": "Add host based on the parameters that you have specified.",
+      "description": "Creates a host based on the parameters that you have specified.",
       "category": "investigation",
       "annotation": "add_host",
-      "title": "Add Host",
+      "title": "Create Host",
       "enabled": true,
       "parameters": [
         {
@@ -96,8 +96,8 @@
           "editable": true,
           "type": "text",
           "name": "name",
-          "tooltip": "Specify the host name. Must be unique in the domain.",
-          "description": "Specify the host name. Must be unique in the domain."
+          "tooltip": "Specify the host name that you want to create. The host name must be unique in the domain.",
+          "description": "Specify the host name that you want to create. The host name must be unique in the domain."
         },
         {
           "title": "IP Address",
@@ -157,8 +157,8 @@
           "editable": true,
           "type": "json",
           "name": "nat-settings",
-          "tooltip": "Specify the NAT settings.",
-          "description": "Specify the NAT settings.",
+          "tooltip": "Specify the NAT settings for the host object.",
+          "description": "Specify the NAT settings for the host object.",
           "value": {
             "auto-rule": false,
             "ip-address": "198.168.123.1",
@@ -174,8 +174,8 @@
           "editable": true,
           "type": "text",
           "name": "tags",
-          "tooltip": "Specify comma separated tags.",
-          "description": "Specify comma separated tags.",
+          "tooltip": "Specify comma separated tags for the host object.",
+          "description": "Specify comma separated tags for the host object.",
           "placeholder": "tag1,tag2"
         },
         {
@@ -301,7 +301,7 @@
     },
     {
       "operation": "update_host",
-      "description": "Update host based on the parameters that you have specified.",
+      "description": "Updates a host based on the parameters that you have specified.",
       "category": "investigation",
       "annotation": "update_host",
       "title": "Update Host",
@@ -325,7 +325,7 @@
               {
                 "title": "UID",
                 "name": "uid",
-                "description": "Specify the UID of the host.",
+                "description": "Specify the host UID to update the host.",
                 "type": "text",
                 "visible": true,
                 "editable": true,
@@ -336,7 +336,7 @@
               {
                 "title": "Name",
                 "name": "name",
-                "description": "Specify the name of the host.",
+                "description": "Specify the host name to update the host.",
                 "type": "text",
                 "visible": true,
                 "editable": true,
@@ -405,8 +405,8 @@
           "editable": true,
           "type": "json",
           "name": "nat-settings",
-          "tooltip": "Specify the NAT settings.",
-          "description": "Specify the NAT settings.",
+          "tooltip": "Specify the NAT settings for the host object.",
+          "description": "Specify the NAT settings for the host object.",
           "value": {
             "auto-rule": false,
             "ip-address": "198.168.123.1",
@@ -432,8 +432,8 @@
           "editable": true,
           "type": "text",
           "name": "tags",
-          "tooltip": "Specify comma separated tags.",
-          "description": "Specify comma separated tags.",
+          "tooltip": "Specify comma separated tags for the host object.",
+          "description": "Specify comma separated tags for the host object.",
           "placeholder": "tag1,tag2"
         },
         {
@@ -682,7 +682,7 @@
     },
     {
       "operation": "get_host_details",
-      "description": "Retrieve host details based on the uid or name that you have specified.",
+      "description": "Retrieves the host details based on the uid or name that you have specified.",
       "category": "investigation",
       "annotation": "get_host_details",
       "title": "Get Host Details",
@@ -706,7 +706,7 @@
               {
                 "title": "UID",
                 "name": "uid",
-                "description": "Specify the UID of the host.",
+                "description": "Specify the host UID to retrieve the host's details.",
                 "type": "text",
                 "visible": true,
                 "editable": true,
@@ -717,7 +717,7 @@
               {
                 "title": "Name",
                 "name": "name",
-                "description": "Specify the name of the host.",
+                "description": "Specify the host name to retrieve the host's details.",
                 "type": "text",
                 "visible": true,
                 "editable": true,
@@ -753,7 +753,7 @@
     },
     {
       "operation": "delete_host",
-      "description": "Delete existing object using object name or uid.",
+      "description": "Deletes an existing host object based on the name or uid that you have specified.",
       "category": "investigation",
       "annotation": "delete_host",
       "title": "Delete Host",
@@ -777,7 +777,7 @@
               {
                 "title": "UID",
                 "name": "uid",
-                "description": "Specify the UID of the host.",
+                "description": "Specify the host UID to delete the host.",
                 "type": "text",
                 "visible": true,
                 "editable": true,
@@ -788,7 +788,7 @@
               {
                 "title": "Name",
                 "name": "name",
-                "description": "Specify the name of the host.",
+                "description": "Specify the host name to delete the host.",
                 "type": "text",
                 "visible": true,
                 "editable": true,
